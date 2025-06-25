@@ -1,0 +1,36 @@
+% Vorlage für Praktikumsberichte
+%
+% main.tex
+%
+% Das ist das zentrale Dokument.
+
+%allgemeine Einstellungen
+\input{Einstellungen}
+
+
+\begin{document}
+
+\include{Kapitel/Titelseite}
+%include bindet andere .tex Dateien ein und hilft somit bei der Erstellung eines übersichtlichen Dokumentes
+
+\pagenumbering{gobble}
+\pagenumbering{Roman}
+%Ab hier Seitenzahlen mit Römischen Ziffern
+
+\tableofcontents
+%erstellt das vollautomatische Inhaltsverzeichnis
+
+\clearpage
+\pagenumbering{arabic}
+%ab hier Seitenzahlen in Arabischen Zahlen
+
+\include{Kapitel/Wochenberichte}
+
+\include{Kapitel/Projektbericht}
+
+\printbibliography
+%erstellt das Literaturverzeichnis
+
+\end{document}
+%beendet das Dokument
+
