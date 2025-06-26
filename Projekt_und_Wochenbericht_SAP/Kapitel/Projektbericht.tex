@@ -22,20 +22,52 @@ Probleme: Warum CI/CD für Infrastruktur- und Applikations-Lifecycle nicht ausre
 \subsection{Grundlagen und Technologien}
 
 \subsubsection{CI/CD-Piepline: Rollen und Grenzen im Infrastrukturmanagement}
+Definition von CI/CD im Cloud-Kontext \\
+Rolle bei Infrastrukturprovisionierung \\
+Grenzen: Wo hört CI/CD auf, wo beginnt IaC?
 
 \subsubsection{Infrastructure as Code (IaC): z.B. Terraform, Pulumi}
+Was genau ist Infrastructure as Code \\
+Prinzipien: deklarativ vs Imperativ \\
+Tools: Terraform, Pulumi - Unterschiede und Use Cases \\
+Vor- und Nachteile von IaC
 
 \subsubsection{Infrastructure as Data (IaD): Kubernetes-CRDs als deklarativer Zustand}
+Definition Infrastructur as Data: Abgrenzung zu IaC \\
+CRDs(Custom Resource Definitions): Bedeutung und Funktion Kubernetes \\
+Deklaritiver vs Imperativer Zustand: Vorteile des deklarativen Modells \\
+Beispiele für CRD-Nutzung im Infrastrukturmanagement
+
 
 \subsubsection{Kubernetes Operatoren und Controller Pattern: kurzer Überblick}
 
 \subsubsection{Crossplane: Konzepte und Funktionen in diesem Projekt}
+Was ist Crossplane: Kurze Einführung und Motivation \\
+Crossplane-Architektur: Composition, Managed Resources, Providers \\
+Einbindung von Providern (z.B. Cloud Foundry Provider) \\
+Spezifische Relevanz für dieses Projekt: \\
+    - Warum Crossplane für SAP / Cloud Foudry geeignet ist \\
+    - Nutzung für MTA-Ressource
 
 \subsubsection{SAP Cloud Orchestrator: Rolle bei der Ressourcenorchestrierung}
+Kurzbeschreibung SAP Cloud Orchestrator: Funktion im SAP-Umfeld \\
+Integration mit Kubernetes / Crossplane \\
+Rolle im Projektkontext: Steuerung, Überwachung, Breitstellung
 
 \subsubsection{Cloud Foundry: Konzept und Funktion in diesem Projekt (Primär auf MTA bezogen)}
+Einführung Cloud Foundry (CF) \\
+Was sind Multi-Target Applications (MTA): Aufbau, Vorteile, SAP-Kontex \\
+Bereitstellung von MTAs in CF: Aktueller Stand, manuelle vs automatisierte Bereitstellung \\
+Bezug zu Crossplane-Integration: Warum eine IaC-Lösung für MTA gebraucht wird
 
 \subsection{Konzept zur Erweiterung des bestehenden Cloud Foundry Providers durch die MTA Ressource}
+Ausgangslage:
+    - Was bietet der CF Provider aktuell ohne MTA? \\
+    - Beschreibung des bestehenden Cloud Foundry Providers \\
+    - Funktionalitäten und Grenzen des bestehenden Providers \\
+    - Warum ist eine Erweiterung notwendig? \\
+Zielsetzung: Warum MTA als neue Ressoruce nötig ist \\
+Architektur der Erweiterung: Wie wird die MTA-Ressource integriert? \\
 
 \subsection{Implementierung der MTA Ressource:}
 Designentscheidungen bei der Erweiterung des CF-Providers \\
