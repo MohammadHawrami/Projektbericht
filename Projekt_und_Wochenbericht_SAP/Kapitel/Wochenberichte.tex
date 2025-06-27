@@ -240,7 +240,122 @@ dem Daily arbeitete ich weiterhin an der Optimierung der Tests. Auch am Freitag
 setzte ich diese Arbeit fort. In einem Meeting mit einem Kollegen aus Berlin
 besprachen wir Logikfehler in seinen Tests, die ich im Anschluss überarbeiten werde.
 
-git config --get-all user.name [11ms]
-2025-06-25 16:20:14.725 [info] > git config --get-all user.email [10ms]
+\subsection{Woche 10 - Testverbesserung und Umsetzung der Kubernetes Basic-Auth}
+Diese Woche lag der Fokus erneut auf der Weiterentwicklug und Verbesserung der Tests sowie der Umsetzung meiner neuen
+Aufgabe im Umgang mit Secrets im Kubernetes Cluster.
+Am Montag nahm ich kurz an einem HPOM Workshop teil, entschied mich jedoch, mich lieber auf meine Aufgaben zu konzentrieren.
+Den Großteil des Tages verbrachte ich damit, bestehende Tests zu überarbeiten und Fehler zu beheben.
+Im Daily Meeting berichtete ich über den Fortschritt.
+Die neue Aufgabe drehte sich draum, Secrets nicht mehr im Projekt abzulegen, sondern sicher im Kubernetes Cluster zu speichern.
+Wir nutzen hierfür Basic Authentication, die im Wesentlichen über einen einzigen Commant mit Buntzername, Passwort und
+Namespace funktioniert, um Zugriff auf das Artifactory zu erhalten.
+Beim Versuch, eine Pull Request zu erstellen, stieß ich auf Probleme mit der Commit-Historie, die sich asl unterschiedlich
+zu einem anderen Branch herausstellte.
+Am Dienstag löschte ich daraufhin meinen Branch und erstellte ihn neu, um die Probleme mit der Historie zu beheben.
+Anschließend konnte ich erfolgreich eine PR für die Tests der MTA-Parameter sowie einige Bugfixes einreichen.
+Im wöchentlochen Team Planning besprachen wir die geplanten Releases für die kommenden Wochen.
+Außerdem beschäftigte ich mich weiter mit meiner Aufgabe, analysierte den Aufbau der vorhandenen Docker Registry und vertiefte
+mich in die Basic-Auth Umsetzung.
+Zur Sicherheit holte ich mir Rückfragen bei einem Kollegen ein, um den Ablauf abzusichern
+Mittwoch lag der Schwerpunkt weiterhin auf der Basic-Auth.
+Ich erstellte den Command, umd die Secrets zu generieren und nahm Änderungen am Controller vor, indem wir jetzt Kubernetes
+Konstanten anstelle von Strings verwenden.
+Mittags fand ein Meeting zur Priorisierung der SCM-Abteilung im zweiten Halbjahr statt, gefolgt von einem Tech-Talk, in dem
+zwei Kollegen über UI5 und die Verbindung mit GitHub Copilot berichteten.
+Am Donnerstag schloss ich meine Aufgabe mit der Basic-Auth ab und testete gründlich, ob alles erwartugsgemäß funktioniert.
+Dabei traten Probelme auf, etwas Fehler bei Jobs, die nicht als abgebrochen, sondern als Fehler makiert wurden, sowie eine
+Inkonsistenz bei der MTA-Verfügbarkeit zwischen Cloud Foundry und dem BTP Space.
+Nach einer Suche mit einem CF-Befehl konnte ich die fehlerhafte MTA löschen, sodass alles wieder ordnungsgemäß lief.
+Zudem begann ich mit der Gliederung meines Projektberichts und präsentierte meine Ergebnisse einem Kollegen aus Berlin zur Abstimmung.
+Freitag startete ich mit dem Daily Meeting in den Tag, erstellte die Pull Request für meine neue Aufgabe und arbeitete weiter
+an der Gleiderung des Projektberichts sowie an weiteren Tests.
+
+\subsection{Woche 11 - Fortschritte bei Secret-Implementierung und Testanpassung}
+Da die Woche nur drei Arbeitstage umfasste, konzentrierte ich mich intensiv auf die Weiterentwicklung meiner aktuellen Aufgabe
+sowie die Vorbereitung des Projektberichts.
+Am Montag nahm ich am Relase Review teil, bei dem jede Abteilung ihre Neuerungen präsentierte, teilweise begleitet von Demos.
+Zudem begann ich mit der ersten Gliederung für den Projektbericht, orientierte mich dabei an den Vorgaben von Herrn Leuchter
+und holte mir Feedback von meinem Betreuer ein.
+Außerdem überprüfte ich, welche Secret-Dateien aktuell verwendet werden, um später die passenden Parameter herauszufiltern.
+Am Dienstag arbeitete ich weiter an der Umsetzung der Unterscheidung zwischen zwei Secret-Typen.
+Am Nachmittag hatte ich ein Meeting mit einem Kollegen aus Berlin, um die Implementierung durchzugeen.
+Meine Pull Request wurde ebenfalls reviewed und mit kleineren Verbesserungen akzeptiert.
+Im langen Team Planning wurden zwei User Stories ausführlich besprochen, Aufgaben verteilt und Statusupdates gegeben.
+Im Gespräch mit einem Kollegen klärte ich offene Fragen zu Kommentaren in Testmethoden und zeigte meine Implementierung.
+Dabei stellte sich heraus, dass es bereits eine ähnliche Funktion zur Auslesung der Credentials gab, die ich nun adaptieren
+und die Test entsprechen anpassen werde.
+Am Mittwoch nahm ich an einem Daily und dem Employee Meeting teil, bei dem Updates zum Semesterplan und zum HPOM-Projekt
+vorgestellt wurden.
+Ich entschied mich, den Controller für das Parsen der MTA-JSON beizubehalten, das die alternative Version zu spezifisch für
+Apps ist und zudem die bestehende Lösung funktioniert.
+Anschließend passte ich die Tests an, um beide Secret arten, Basic-Auth und Docker Registry zu unterstützen.
+Nach einem gefundenen Logikfehler im Code, den ich schnell behob, laufen die Tests jetzt wieder fehlerfrei.
+
+\subsection{Woche 12 - Einrichtung des Cloud Orchestrators und erste Flux anbindung}
+Woche 12 begann wie gewohnt mit dem Daily. Danach arbeitete ich weiter an den Tests für den Provider, konkret am TestObserve.
+Trotz vieler Versuche konnte ich den Fehler nicht finden, auch mein Betreuer wusste zunächst nicht weiter.
+Ein Kollege, der den test geschrieben hatte, konnte mir schließlich helfen, sodass das Problem gelöst werden konnte.
+Die Änderungen habe ich am Dienstag gepusht.
+Zusätzlich arbeitete ich an meinem JSON-Parser, der für das Docker Registry Secret notwendig ist, da dort Zugangsdaten im
+JSON format enthalten sind.
+Bestehende Parser deckten den MTA-Anwendungsfall nicht ab, daher war eine Anpassung nötig.
+Wie jeden Dienstag fand das Team Planning statt, zu dem erhielt ich auch am Dienstag eine neue Aufgabe, den Cloud Orchestrator
+für einen bestimmten BTP-Account aufzusetzen und dort testweise einen MTA zu deployen.
+Beim Aufsetzen kam es zu Zugriffsproblemen, ich prüfte alle Konfigurationen, konnte den Fehler jedoch zunächst nicht finden.
+Ein Call mit einem Kollegen brachte ebenfalls keine direkte Lösung.
+Erste am Mittwochmorgen stellte sich heraus, dass der Fehler durch einen falsch gesetzeten Namespace verursacht wurde.
+Im weiteren Verlauf hatte ich ein Meeting zum Thema Managed Controll Plane (MCP), bei dem ich erneut keinen Zugriff hatte.
+Ein Kollege unterstütze mich beim Erstellen der MCP und bei der Beschaffung der zugehörigen kubeconfig.
+Dabei wurde mir auch erklärt, dass es zwei verschiedene Konfigurationen gibt, eine für die Erstellung von Workspace, Project
+und MCP und eine seperate für die Verbindung zur MCP selbst.
+Anschließend connecte ich Flux mit der MCP.
+Der erste Versuch schlug fehl, aber nach Korrektur eines Konfigurationsfehler funktionierte die Verbindung.
+Danach wollte ich die MTA deployen, was erneut nicht funktionierte.
+Zusammen mit einem Kollegen fand ich heraus, dass noch einige Komponenten fehlten.
+Am Freitag setzte ich die Arbeit fort und konnte das Setup fast abschließen.
+Zum Ende der Woche fand ein Gespärch mit meinem Manager statt, in dem ich den aktuellen Stand präsentierte und das weitere
+Vorgehen besprochen wurde.
+
+\subsection{Woche 13 - Fehlersuche und Fortschritte beim Cloud Orchestrator und MTA Deployment}
+In dieser Woche, die aufgrund eines Feiertages nur vier Arbeitstage umfasste, arbeitete ich weiter am Cloud Orchestrator.
+Am Dienstag fand wie gewohnt das Team Planning statt. Beim Aufsetzen des Orchestrators traten weiterhin Probleme auf, die
+ich jedoch etwa eine Stunde vor Feierabend beheben konnte. Anschlißend versuchte ich, die MTA zu deployen, stieß dabei aber
+auf einen unerklärlichen Fehler mit dem Statuscode 403 Forbidden.
+Am Mittwoch konzentrierte ich mich wieder auf den Provider.
+Um herauszufinden,warum das MTA Deployment in den BTP Space weiterhin nicht funktionierte, installierte ich eine Erweiterung,
+um Logausgaben des Providers sichtbar zu machen.
+Leider lieferten diese zunächst keinen hilfreichen Informationen.
+Daher konnte ich schließlich Logs einsehen, jedoch enthielten sie keine aussagekräftige Fehlermeldung.
+Daraufhin kontaktierte ich einen Kollegen aus dem Cloud Orchestrator Team mit der bitte, den Debug-Modus im Provider zu aktivieren.
+Am Freitag konnte ich das Problem schließlich identifizieren, die Space ID des BTP-Spaces war veraltet, da der ursprüngliche
+Space zwei Wochen zuvor gelöscht worden war.
+Nach Aktualisierung der ID funktionierte das Deplyoment.
+Zusätzlich erhielt ich noch Feedback von meinem Betreuer zu meiner Gliederung, das ich aufgenommen und entsprechen umgesetzt habe.
+
+\subsection{Woche 14 - Fehlersuche, Vault ansätze und fortschritte im Cloud Orchestrator}
+Die Woche begann wie gewohnt mit dem Daily.
+Direkt danach nahm ich mir vor, weitere Tests mit der Managed Controll Plane (MCP) durchzuführen.
+Beim Versuch, erneut einen MTA zu deployen, stellte ich fest, dass es dauerhaft fehlschlug.
+Nach längerer Fehlersuche, dem Erstellen von zwei neuen MCPs und etwas ein bis zwei Studen Analyse fand ich den Grund, mein
+GitHub Access Token war abgelaufen, was dazu führte, dass Flux und das Reconciling nicht mehr richtig funktionierten.
+Beim Aktualisieren des Secrets kam es zu weiteren Problemen, sodass ich mehrmals ein neues Token erstellen und schließlich die
+Änderungen direkt in OpenLens vornehmen musste.
+Nach erfolgreicher Wiederherstellung der MCP hatte ich ein Meeting mit meinem Betreuer, in dem wir die nächsten Schritte
+besprachen.
+Dabei erhielt ich die Aufgabe, das Setup mit sauberer Benennung und in einem produktiv genutzten Space erneut durchzuführen.
+Parallel dazu begann ich, micht mit HashCorp Vault zu beschäftigen insbesondere damit, wie sich Secret sicher verwalten lassen,
+ohne sie ins Git Repository zu pushen.
+Beim Testen stieß ich jedoch auf Zugriffsprobleme und entschied mich, vorerst beim bisherigen Ansatz zu bleiben, jedoch
+nur einen Secret vorlage im Repository zu hinterlegen.
+Ich gehe davon aus, dass Flux die Secrets direkt aus dem Cluster zieht, nicht aus dem Repository.
+In einem Meeting mit den Kollegen aus Ungarn wurde zudem einen Java-Testbibliothek vorgestellt.
+Später nahm ich an einer Info Session zur Durchführung von Bachelor- und Masterarbeiten teil, in der u. a. Verträge, Gehalt
+und organisatorische Abläufe erklärt wurden.
+Am Ende gab es eine offene Fragerunden für Werkstudenten und Praktikanten.
+Zum Ende der Woche setzte ich meine Aufgabe fort, den Cloud Orchestratro für den SAP-EPD BTP-Account neu aufzusetzen, um die
+MTAs im entsprechenden Space zu deployen.
+Dabei traten kleinere Probleme auf, dich ich beheben konnte, bis mein kubectl in OpenLens plötzlich nicht mehr funktionierte,
+was mich erneut ausbremste.
+Am letzten Tag der Woche arbeitete ich daran weiter.
 
 % Ende der Datei
