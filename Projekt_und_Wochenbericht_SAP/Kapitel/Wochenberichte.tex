@@ -1,11 +1,4 @@
-% Vorlage für Praktikumsberichte
-%
-% Einleitung.tex
-%
-% Einleitung mit Vorstellung Unternehmen, Motivation und Bewerbungsprozess
-
 \section{Einleitung}
-
 
 \subsection{Woche 1 - Das Onboarding}
 An meinem ersten Tag habe ich mich zunächst mit meinem Manager im Foyer des
@@ -358,4 +351,26 @@ Dabei traten kleinere Probleme auf, dich ich beheben konnte, bis mein kubectl in
 was mich erneut ausbremste.
 Am letzten Tag der Woche arbeitete ich daran weiter.
 
-% Ende der Datei
+\subsection{Woche 15 - Fortschritte beim Projektbericht und Finalisierung des Cloud Orchestrator}
+In der 15. Woche begann ich am Montag mit der Erstellung meines Projektberichts, indem ich zunächst eine passende Gliederung
+entwarf und diese meinem Betreuer vorlegte und er damit auch zufrieden war.
+Zudem entschied ich mich den gesamten Praxissemesterbericht in LaTeX zu verfassen.
+Parallel dazu arbeitete ich weiter am Cloud Orchestrator und konnte diesen größtenteils fertigstellen.
+Hierbei fehlten mir jedoch noch die notwendigen Secret Daten wie GitHub-Token und Benutzername, wobei mein Betreuer zur
+Klärung einen Kollegen aus Ungarn kontaktierte, der für diese Zugangsdaten verantwortlich ist.
+Am Dienstag nahm ich am wöchentlichen Team-Planning teil, bei dem aktuelle Fortschritte besprochen und neue Aufgaben verteilt
+wurden.
+Danach setzte ich meine Arbeit am Projektbericht fort und arbeitete erneut am Cloud Orchestrator.
+Nachdem ich eine der vorhandenen Secret Varianten ausprobiert hatte, funktionierte der Aufbau zunächst, jedoch traten
+anschließend Probleme mit Flux auf.
+Diese konnte ich durch eine genaue Analyse des Status und der Fehlermeldung identifizieren und zügig beheben.
+Am Mittwoch konnte ich Flux wieder erfolgreich zum Laufen bringen, nachdem ich herausgefunden hatte, dass der Name der
+organization.yaml unterstiche enthielt, die von Flux jedoch nicht unterstützt werden.
+Nach der Korrektur funktionierte Flux wie gewünscht.
+Anschließend   haben wir eine properties-mta.yaml deployed, die zunächst fehlschlug, da der erforderliche Namespace-Name
+nicht angegeben war.
+Nach einer Analyse mit meinem Betreuer entschieden wir, die Controller-Logik so anzupassen, dass kein Default-Name mehr
+gesetzt wurde.
+Mit dieser Anpassung lief der Prozess fehlerfrei durch, sodass wir den ersten Teil meines Projekts erfolgreich abschließen konnten.
+Zudem fand am Morgen ein Meeting mit meinem Betreuer und einem Kollegen statt, in dem mir meine nächste Aufgabe vorgestellt wurde.
+Am Donnerstag und Freitag nahm ich jeweils am Daily teil und beschäftigte mich weiterhin mit dem Projektbericht.
